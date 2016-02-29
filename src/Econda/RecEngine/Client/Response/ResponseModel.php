@@ -10,6 +10,7 @@
 namespace Econda\RecEngine\Client\Response;
 
 use Econda\RecEngine\Widget\Model\ModelInterface;
+use InvalidArgumentException;
 
 class ResponseModel implements ModelInterface
 {
@@ -20,6 +21,8 @@ class ResponseModel implements ModelInterface
     protected $disableIfEmpty = true;
 
     protected $startIndex = 0;
+
+    protected $widgetDetails = array();
 
     public function __construct($data=null)
     {
@@ -40,6 +43,28 @@ class ResponseModel implements ModelInterface
     		}
     		$this->$setterName($value);
     	}
+    }
+
+    /**
+     * Getter for property
+     *
+     * @return array
+     */
+    public function getWidgetDetails()
+    {
+        return $this->widgetDetails;
+    }
+
+    /**
+     * Setter for property
+     *
+     * @param array $widgetDetails
+     *
+     * @return null
+     */
+    public function setWidgetDetails($widgetDetails)
+    {
+        $this->widgetDetails = $widgetDetails;
     }
 
     public function setTitle($title)
